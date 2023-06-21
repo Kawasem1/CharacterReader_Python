@@ -10,7 +10,7 @@ e_cnt = 10
 ans = []
 ans_t=[3,4,3,4,3,4,5,5,6,7]
 #pyocrにTesseractを指定する。
-pyocr.tesseract.TESSERACT_CMD = r'.\tesseract\tesseract.exe'
+pyocr.tesseract.TESSERACT_CMD = r'..\tesseract\tesseract.exe'
 tools = pyocr.get_available_tools()
 tool = tools[0]
 
