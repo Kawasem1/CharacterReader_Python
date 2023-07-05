@@ -18,23 +18,29 @@ tool = tools[0]
 k = 50
 b = 1
 c = 6
+f = 0
 #画像
-for a in range(e_cnt):
-    img = Image.open('.\example4.png')
-    img_dtl=img.crop((k*a,0,k*b,50))
-#画像の文字を抽出
-    builder = pyocr.builders.TextBuilder(tesseract_layout=6)
-    text = tool.image_to_string(img_dtl, lang="eng", builder=builder)
-#"|"を消去しintへ変換
-    text = text.replace("|","")
-    text =int(text)
-    ans.append(text)
-    b+=1
-#答え合わせ
-d = 0
-for d in range(e_cnt):
-    if ans[d] == ans_t[d]:
-        print(f'Q{d+1} 正解!')
-    else:
-        print(f'Q{d+1} 不正解 => A.{ans_t[d]}')
-print(ans)
+def kaiseki(k,b,c,f):
+    for a in range(e_cnt):
+        img = Image.open('.\example5.png')
+        img_dtl=img.crop((k*a,50*f,k*b,50*(f+1)))
+    #画像の文字を抽出
+        builder = pyocr.builders.TextBuilder(tesseract_layout=6)
+        text = tool.image_to_string(img_dtl, lang="eng", builder=builder)
+    #"|"を消去しintへ変換
+        #text = text.replace("|","")
+        #text =int(text)
+        ans.append(text)
+        b+=1
+    #答え合わせ
+    d = 0
+    for d in range(e_cnt):
+        if ans[d] == ans_t[d]:
+            print(f'Q{d+1} 正解!')
+        else:
+            print(f'Q{d+1} 不正解 => A.{ans_t[d]}')
+    print(ans)
+    f+=1
+rawcnt = 2
+for cnt in range(rawcnt):
+    kaiseki(k,b,c,f)
