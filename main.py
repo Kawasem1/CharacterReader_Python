@@ -2,12 +2,13 @@ def yomitori(inputPath,outputPath,name):
 	import os
 	from PIL import Image
 	import pyocr
+	from tkinter import messagebox
 	path='C:\\Program Files\\Tesseract-OCR\\'
 	os.environ['PATH'] = os.environ['PATH'] + path
 	#回答の数、配列初期化、模範解答
 	ans = []
 	#pyocrにTesseractを指定する。
-	pyocr.tesseract.TESSERACT_CMD = r'..\tesseract\tesseract.exe'
+	pyocr.tesseract.TESSERACT_CMD = r'tesseract\tesseract.exe'
 	tools = pyocr.get_available_tools()
 	tool = tools[0]
 	img = Image.open(inputPath)
@@ -19,5 +20,4 @@ def yomitori(inputPath,outputPath,name):
 	f = open(path, 'w')
 	f.writelines(ans)
 	f.close()
-	from tkinter import messagebox
 	messagebox.showinfo('読み取る君','読み取り完了！出力先:' + outputPath)

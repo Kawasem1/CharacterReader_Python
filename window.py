@@ -20,7 +20,6 @@ def Read(event):
     outputPath = editbox2.get()
     if len(outputPath) == 0 :
         messagebox.showerror('読み取る君', '出力先ファイルパスが未入力です。')
-    print(inputPath,outputPath)
     import os
     name = os.path.splitext(os.path.basename(inputPath))[0]
     import main
@@ -47,11 +46,6 @@ editbox2 = tkinter.Entry(width=50)
 editbox2.place(x=10,y=70)
 outputFlie = tkinter.Button(text=u'参照')
 outputFlie.place(x=320,y=67)
-
-def pathRead2(event):
-    from tkinter import messagebox
-
-    print(outputPath)
 
 def foldersansyo(event):
     from tkinter import filedialog
